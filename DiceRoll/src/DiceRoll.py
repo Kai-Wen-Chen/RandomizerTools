@@ -12,13 +12,13 @@ class DiceRoll(object):
             result.append(random.randint(self._minValue, self._maxValue))
         return result
     
-    def setDiceValue(self, minValue: int, maxValue: int) -> None:
+    def setDiceRange(self, minValue: int, maxValue: int) -> None:
         self._minValue = minValue
         self._maxValue = maxValue
 
     def begin(self) -> bool:
-        print(f'Current dice value: {self._minValue} ~ {self._maxValue}')
-        option = input('Input \"r\" to roll dice, \"s\" to set the dice value, or \"q\" to quit: ')
+        print(f'Current dice range: {self._minValue} ~ {self._maxValue}')
+        option = input('Input \"r\" to roll dice, \"s\" to set the dice range, or \"q\" to quit: ')
         if option == 'r' or option == 'R':
             time = input('How many dices (1 ~ 100, or 0 to quit) do you want to roll?: ')
             if not str.isdigit(time):
@@ -47,7 +47,7 @@ class DiceRoll(object):
                 print('Invalid input, please try again')
                 return self.begin()
             
-            self.setDiceValue(int(minValue), int(maxValue))
+            self.setDiceRange(int(minValue), int(maxValue))
             return self.begin()
         
         elif option == 'q' or option == 'Q':
